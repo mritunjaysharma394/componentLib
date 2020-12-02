@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 :root {
-    --primary-color: #7C3AED;
+    --primary-color: #1F2937;
     --dark-gray: #6B7280;
     --off-white: #F3F4F6;
 }
@@ -13,6 +13,13 @@ body {
 hr {
     margin: 2rem 0rem;
 }
+
+/** spaces **/
+
+.margin-md {
+    margin: 2rem;
+}
+
 /** containers **/
 .container {
     padding-left: 1rem;
@@ -27,6 +34,7 @@ hr {
 /** links **/
 
 .link {
+    box-sizing: border-box;
     text-decoration: none;
     padding: 0.5rem 1rem;
 }
@@ -34,13 +42,21 @@ hr {
 .link-primary {
     background-color: var(--primary-color);
     border-radius: 0.5rem;
-    color:white;
+    color: var(--off-white);
 }
 
 .link-secondary {
     color: var(--primary-color);
     border-radius: 0.5rem;
     border: 1px solid var(--primary-color);
+}
+
+.link-center {
+    text-align: center;
+}
+
+.link a:hover {
+    color: var(--off-white);
 }
 
 /** look for BEM conventions of CSS **/
@@ -60,13 +76,20 @@ hr {
 
 .navigation {
     background-color: var(--primary-color);
+    display: flex;
     color:white;
     padding:1rem;
     border-bottom-left-radius:1rem;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
 }
 
 .navigation .nav-brand {
-    font-weight: bold;
+    font-weight: bolder;
+    font-size: large;
+    text-align: left;
 }
 .navigation .link {
     color: white;
@@ -94,23 +117,24 @@ hr {
 
 .hero .hero-heading {
     padding-top: 1rem;
-    color: var(--dark-gray);
+    color: var(--primary-color);
     text-align: center;
 }
 
 .hero .hero-heading .heading-inverted {
-    color: var(--primary-color);
+    color: var(--dark-gray);
 }
 
 /** sections **/
 
 .section {
-    padding: 1rem;
+    padding: 2rem;
 }
 
 .section h1 {
     text-align: center;
 }
+
 
 .ow {
     background-color: var(--off-white);
@@ -119,17 +143,70 @@ hr {
 /** footers **/
 
 .footer {
-    background-color: var(--primary-color);
+    /*background-color: var(--primary-color);*/
     padding: 2rem 1rem;
     text-align: center;
-    color: white;
+    color:black;
     border-top-right-radius: 1rem;
 }
 
+.footer-header {
+    font-weight: bolder;
+    font-size: large;
+}
 .footer .link {
-    color: white;
+    color:white;
 }
 
 .footer ul {
     padding-inline-start: 0px;
+}
+
+.footer-sm-icon {
+    width: 30px;
+}
+
+/** emoji-wave **/
+
+.wave {
+    animation-name: wave-animation;  /* Refers to the name of your @keyframes element below */
+    animation-duration: 2.5s;        /* Change to speed up or slow down */
+    animation-iteration-count: infinite;  /* Never stop waving :) */
+    transform-origin: 70% 70%;       /* Pivot around the bottom-left palm */
+    display: inline-block;
+  }
+
+  @keyframes wave-animation {
+      0% { transform: rotate( 0.0deg) }
+     10% { transform: rotate(14.0deg) }  /* The following five values can be played with to make the waving more or less extreme */
+     20% { transform: rotate(-8.0deg) }
+     30% { transform: rotate(14.0deg) }
+     40% { transform: rotate(-4.0deg) }
+     50% { transform: rotate(10.0deg) }
+     60% { transform: rotate( 0.0deg) }  /* Reset for the last half to pause */
+    100% { transform: rotate( 0.0deg) }
+  }
+
+  /** img emoji **/
+
+  img.emoji {
+    height: 1.4em;
+    width: 1.4em;
+    margin: 0;
+    padding: 0 .09em;
+    vertical-align: -.18em;
+    border: 0;
+    display: inline-block;
+    cursor: text;
+}
+
+a img.emoji {
+    cursor: inherit;
+}
+
+/** icon **/
+
+header nav ul li a span.icon {
+    font-size: 1.15em;
+    vertical-align: -.075em;
 }

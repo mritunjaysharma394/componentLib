@@ -4,140 +4,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Component Library</title>
+    <title>home | Mritunjay Sharma</title>
     <link href="styles.css" rel="stylesheet" />
 </head>
 
 <body>
-    <h1>Welcome to Mritunjay Sharma's Library!</h1>
-    <p>I am attending neog.camp and library to add projects to make
-        all this look consistent.</p>
-
-    <br />
-    <h2>@typography</h2>
-
-    <h1>This is the biggest heading</h1>
-    <h2>Second biggest</h2>
-    <small>This is relatively smaller</small>
-
-    <hr>
-
-    <h2>@container</h2>
-
-    <h3>fluid container</h3>
-    <div class="container">This is a fluid container. It will go full width of the container.
-        It will go full width of page. With some margin. </div>
-
-    <h3>center container</h3>
-    <div class="container container-center">This is a centered container and it will go till specified width </div>
-
-    <hr>
-
-    <h2>@Links</h2>
-
-    <a class="link link-primary" href="/">Primary Link</a>
-    <a class="link link-secondary" href="/">Secondary Link</a>
-
-    <hr>
-
-    <h2>@lists</h2>
-
-    <h3>unordered list</h3>
-
-    <ul class="list-non-bullet">
-
-        <li>Item one</li>
-        <li>Item two</li>
-        <li>Item three</li>
-
-    </ul>
-
-    <h3>unordered inline list</h3>
-
-    <ul class="list-non-bullet">
-
-        <li class="list-item-inline">Inline item one</li>
-        <li class="list-item-inline">Inline item two</li>
-        <li class="list-item-inline">Inline item three</li>
-
-    </ul>
-
-    <h3> reverse order lists</h3>
-
-    <ol reversed>
-        <li>milk</li>
-        <li>eggs</li>
-        <li>break</li>
-    </ol>
-
-    <hr />
-
-    <h2>@nav</h2>
-
     <nav class="navigation container">
-        <div class="nav-brand">iAmBrand</div>
+        <div class="nav-brand"><a class="link" href="/">Mritunjay Sharma</a></div>
         <ul class="list-non-bullet nav-pills">
             <li class="list-item-inline">
-                <a class="link link-active" href="/">home</a>
+                <a class="link link-active" href="/"> <span class ="icon"><img draggable="false" loading="eager" class="emoji" alt="🏡" src="/images/home.svg"></span> home</a>
             </li>
             <li class="list-item-inline">
-                <a class="link" href="/">projects</a>
+                <a class="link" href="/projects.html"> <span class ="icon"><img draggable="false" loading="eager" class="emoji" alt="👨‍💻" src="images/projects.svg"></span> projects</a>
             </li>
             <li class="list-item-inline">
-                <a class="link" href="/">about</a>
+                <a class="link" href="/projects.html"> <span class ="icon"><img draggable="false" loading="eager" class="emoji" alt="🗒" src="images/blogging.svg"></span> blogs </a>
             </li>
         </ul>
     </nav>
 
-    <hr>
-
-    <h2>header</h2>
-
     <header class="hero">
-        <img class="hero-img" src="images/hero.svg" />
-        <h1 class="hero-heading">heading inside <span class="heading-inverted">header</span></h1>
+        <img class="hero-img" src="images/hero-4.svg" />
+        <h1 class="hero-heading">Hello <span class="wave">&#128075</span>, This is  <span class="heading-inverted">Mritunjay Sharma</span></h1>
     </header>
 
-    <hr>
 
-    <h2>@sections</h2>
+
+    <section class="section ow">
+        <div class="container container-center">
+            <h1>technologies</h1>
+            <p>C, C++, HTML/CSS, JavaScript, Python, Git, Gatsby, MySQL, Docker, Bash</p>
+        </div>
+
+    </section>
+
     <section class="section">
         <div class="container container-center">
-            <h1>white section</h1>
+            <h1>projects</h1>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
                 industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
                 scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
                 into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
                 release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
                 software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <p class="link-center"><a class="link link-primary link-center" href="/projects.html">View Projects</a></p>
         </div>
     </section>
 
     <section class="section ow">
         <div class="container container-center">
-            <h1>off white section</h1>
+            <h1>blogs</h1>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
                 industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
                 scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
                 into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
                 release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
                 software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <p class="link-center"><a class="link link-secondary link-center" href="/blogs.html">View Blogs</a></p>
         </div>
 
     </section>
 
-    <hr>
-
-    <h2>@footer</h2>
     <footer class="footer">
         <div class="footer-header">Some small heading inside footer</div>
         <ul class="social-links">
             <li class="list-item-inline">
-                <a class="link" href="/">socialOne
+                <a class="link" href="http://github.com/mritunjaysharma394"><img class="footer-sm-icon" src="images/github.svg"/>
                 </a>
-            </li class="list-item-inline"> <a class="link" href="/">socialTwo
+            </li class="list-item-inline"> <a class="link" href="https://twitter.com/mritunjay394"><img class="footer-sm-icon" src="images/twitter.svg"/>
             </a>
-            </li class="list-item-inline"> <a class="link" href="/">socialThree</li>
+            </li class="list-item-inline"> <a class="link" href="https://www.linkedin.com/in/mritunjay394/"><img class="footer-sm-icon" src="images/linkedin.svg"/></li>
             </a>
         </ul>
     </footer>
