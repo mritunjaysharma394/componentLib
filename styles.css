@@ -5,9 +5,10 @@
     --dark-gray: #6B7280;
     --off-white: #F3F4F6;
 }
+
 body {
-    font-family:'Montserrat',
-    sans-serif;
+    font-family: 'Montserrat',
+        sans-serif;
 }
 
 hr {
@@ -36,7 +37,7 @@ hr {
 .link {
     box-sizing: border-box;
     text-decoration: none;
-    padding: 0.5rem 1rem;
+    padding: 0.25rem 0.5rem;
 }
 
 .link-primary {
@@ -77,12 +78,10 @@ hr {
 .navigation {
     background-color: var(--primary-color);
     display: flex;
-    color:white;
-    padding:1rem;
-    border-bottom-left-radius:1rem;
-    -webkit-box-align: center;
+    color: black;
+    padding: 1rem;
+    border-bottom-left-radius: 1rem;
     align-items: center;
-    -webkit-box-pack: justify;
     justify-content: space-between;
 }
 
@@ -91,12 +90,17 @@ hr {
     font-size: large;
     text-align: left;
 }
+
 .navigation .link {
     color: white;
+    display: flex;
+    flex-direction: row;
 }
 
-.navigation  .nav-pills {
+.navigation .nav-pills {
     text-align: right;
+    display: flex;
+    flex-direction: row;
 }
 
 .navigation .link-active {
@@ -146,7 +150,7 @@ hr {
     /*background-color: var(--primary-color);*/
     padding: 2rem 1rem;
     text-align: center;
-    color:black;
+    color: black;
     border-top-right-radius: 1rem;
 }
 
@@ -154,8 +158,9 @@ hr {
     font-weight: bolder;
     font-size: large;
 }
+
 .footer .link {
-    color:white;
+    color: white;
 }
 
 .footer ul {
@@ -169,27 +174,56 @@ hr {
 /** emoji-wave **/
 
 .wave {
-    animation-name: wave-animation;  /* Refers to the name of your @keyframes element below */
-    animation-duration: 2.5s;        /* Change to speed up or slow down */
-    animation-iteration-count: infinite;  /* Never stop waving :) */
-    transform-origin: 70% 70%;       /* Pivot around the bottom-left palm */
+    animation-name: wave-animation;
+    /* Refers to the name of your @keyframes element below */
+    animation-duration: 2.5s;
+    /* Change to speed up or slow down */
+    animation-iteration-count: infinite;
+    /* Never stop waving :) */
+    transform-origin: 70% 70%;
+    /* Pivot around the bottom-left palm */
     display: inline-block;
-  }
+}
 
-  @keyframes wave-animation {
-      0% { transform: rotate( 0.0deg) }
-     10% { transform: rotate(14.0deg) }  /* The following five values can be played with to make the waving more or less extreme */
-     20% { transform: rotate(-8.0deg) }
-     30% { transform: rotate(14.0deg) }
-     40% { transform: rotate(-4.0deg) }
-     50% { transform: rotate(10.0deg) }
-     60% { transform: rotate( 0.0deg) }  /* Reset for the last half to pause */
-    100% { transform: rotate( 0.0deg) }
-  }
+@keyframes wave-animation {
+    0% {
+        transform: rotate(0.0deg)
+    }
 
-  /** img emoji **/
+    10% {
+        transform: rotate(14.0deg)
+    }
 
-  img.emoji {
+    /* The following five values can be played with to make the waving more or less extreme */
+    20% {
+        transform: rotate(-8.0deg)
+    }
+
+    30% {
+        transform: rotate(14.0deg)
+    }
+
+    40% {
+        transform: rotate(-4.0deg)
+    }
+
+    50% {
+        transform: rotate(10.0deg)
+    }
+
+    60% {
+        transform: rotate(0.0deg)
+    }
+
+    /* Reset for the last half to pause */
+    100% {
+        transform: rotate(0.0deg)
+    }
+}
+
+/** img emoji **/
+
+img.emoji {
     height: 1.4em;
     width: 1.4em;
     margin: 0;
@@ -211,7 +245,7 @@ header nav ul li a span.icon {
     vertical-align: -.075em;
 }
 
-@media screen and (max-width: 500px) {
+/* @media screen and (max-width: 500px) {
     .nav-brand a {
       float: none;
       display: block;
@@ -219,8 +253,19 @@ header nav ul li a span.icon {
   }
 
   @media screen and (max-width: 500px) {
-    .navigation .link {
+    .navigation a {
       float: none;
       display: block;
+      padding: 0rem;
     }
-  }
+  } */
+
+/** attempt to make responsive **/
+
+@media screen and (max-width: 768px) {
+    .navigation .nav-pills {
+        display: block;
+        flex-direction: column;
+        align-items: center;
+    }
+}
