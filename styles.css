@@ -37,7 +37,7 @@ hr {
 .link {
     box-sizing: border-box;
     text-decoration: none;
-    padding: 0.25rem 0.5rem;
+    padding: 0.5rem 1rem;
 }
 
 .link-primary {
@@ -46,18 +46,25 @@ hr {
     color: var(--off-white);
 }
 
+.link-primary:hover {
+    color: var(--dark-gray);
+}
+
 .link-secondary {
     color: var(--primary-color);
     border-radius: 0.5rem;
     border: 1px solid var(--primary-color);
 }
 
+.link-secondary:hover {
+    color: var(--dark-gray);
+}
 .link-center {
     text-align: center;
 }
 
-.link a:hover {
-    color: var(--off-white);
+.navigation .link:hover {
+    color: var(--dark-gray);
 }
 
 /** look for BEM conventions of CSS **/
@@ -231,7 +238,7 @@ img.emoji {
     vertical-align: -.18em;
     border: 0;
     display: inline-block;
-    cursor: text;
+    cursor: pointer;
 }
 
 a img.emoji {
@@ -261,11 +268,70 @@ header nav ul li a span.icon {
   } */
 
 /** attempt to make responsive **/
-
+/*
 @media screen and (max-width: 768px) {
     .navigation .nav-pills {
         display: block;
         flex-direction: column;
         align-items: center;
     }
+} */
+
+/** best attempt to make it responsive */
+
+label {
+    margin: 0 40px 0 0;
+    font-size: 26px;
+    line-height: 70px;
+    display: none;
+    width: 26px;
+
+}
+
+#toggle {
+    display: none;
+}
+
+
+@media only screen and (max-width: 500px) {
+    label {
+        display: block;
+        cursor: default;
+    }
+
+    .navigation {
+        padding: 0.2rem;
+    }
+
+    .navigation .nav-pills {
+        text-align: center;
+        width: 100%;
+        display: none;
+        position: absolute;
+        right: 0px;
+        top: 55px;
+        background-color: var(--primary-color);
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+        /* border-top-right-radius: 1rem;
+        border-top-left-radius: 1rem; */
+        padding: 0rem;
+        z-index: 50;
+        margin-right: 0.50rem;
+        width: auto;
+    }
+
+    /* .navigation a{
+        display: block;
+        margin: 0;
+
+    }  */
+    #toggle:checked+.nav-pills {
+        display: block;
+        flex-direction: column;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-around;
+    }
+
 }
