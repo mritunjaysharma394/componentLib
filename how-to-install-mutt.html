@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home | Mritunjay Sharma</title>
+    <link href="styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <nav class="navigation container">
+        <div class="nav-brand"><a class="link" href="/">Mritunjay Sharma</a></div>
+        <label for="toggle"><img class="emoji" src="/images/burger.svg"></label>
+        <input type="checkbox" id="toggle" />
+        <ul class="list-non-bullet nav-pills">
+            <li class="list-item-inline">
+                <a class="link link-active" href="/"> <span class="icon"><img draggable="false" loading="eager"
+                            class="emoji" alt="🏡" src="/images/home.svg"></span> home</a>
+            </li>
+            <li class="list-item-inline">
+                <a class="link" href="/projects.html"> <span class="icon"><img draggable="false" loading="eager"
+                            class="emoji" alt="👨‍💻" src="images/projects.svg"></span> projects</a>
+            </li>
+            <li class="list-item-inline">
+                <a class="link" href="/blogs.html"> <span class="icon"><img draggable="false" loading="eager"
+                            class="emoji" alt="🗒" src="images/blogging.svg"></span> blogs </a>
+            </li>
+            <li class="list-item-inline">
+                <a class="link" href="https://drive.google.com/file/d/17zW8grPJZRVPUJFK2oLMcBYwqTbS1GIc/view"> <span
+                        class="icon"><img draggable="false" loading="eager" class="emoji" alt="🗒"
+                            src="images/approved.svg"></span> resume </a>
+            </li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <img class="hero-img" src="images/mutt.jpeg" />
+        <h1 class="hero-heading">How to setup <span class="heading-inverted"> mutt with Gmail?</span></h1>
+    </header>
+
+    <section class="section ow">
+        <div class="container container-center">
+            <hr>
+            <p>A step-by-step guide to configure your terminal mail client!</p>
+            <h3 id="what-when-and-why-">What, When and Why?</h3>
+            <p>Well if you are a beginner like me and have been living in this illusion that we have to open the browser
+                client to send and receive emails then this blog is to tell you that you are not alone!</p>
+            <p>Till the time I started my tryst with sending Linux Kernel Patches, even I didn’t know that a thing like
+                text-based mail client existed, lol! 😆</p>
+            <p>In this step-by-step guide, I will tell you how you can enjoy all your mailing powers straight from the
+                command-line!</p>
+            <p>But hey, you must be wondering why to use text-based mail clients et al?</p>
+            <p><strong>Two reasons</strong>:</p>
+            <ol>
+                <li>
+                    <p>To have just some aesthetic fun to show off to your friends that “Hey look, I am a Hacker!
+                        Mailing you straight from my green Terminal 😝”</p>
+                </li>
+                <li>
+                    <p>Or get into some serious Linux Kernel Development kinda business where you are not expected to
+                        send HTML emails and base64 attachments. Well to tell you the secret — entire Linux kernel is
+                        developed and maintained over emails. So you know now how important an email client becomes 😄
+                    </p>
+                </li>
+            </ol>
+            <p>There are many Command-Line mail clients but I have chosen mutt to help you set up with your Gmail
+                account. Wondering why mutt?</p>
+            <p>Well, I will use the<strong> official slogan of mutt</strong> to answer that:</p>
+            <p><strong>“<em>All mail clients suck. This one just sucks less.”</em></strong></p>
+            <h3 id="the-steps-for-ubuntu-18-04-and-above-">The Steps (For Ubuntu 18.04 and above)</h3>
+            <p>Enough of Introduction! Let’s start with the steps!</p>
+            <p><strong><em>Step 1:</em></strong> Install mutt.</p>
+            <pre><code>sudo apt-<span class="hljs-keyword">get</span> install mutt
+            </code></pre>
+            <p><strong><em>Step 2:</em></strong> Create directories for mutt to store the cache message headers and
+                bodies, and store certificates, by entering the following commands:</p>
+            <pre><code>mkdir -p ~<span class="hljs-regexp">/.mutt/cache</span><span class="hljs-regexp">/headers
+            mkdir ~/</span>.mutt/cache/bodies
+            touch ~<span class="hljs-regexp">/.mutt/certificates</span>
+            </code></pre>
+            <p><strong><em>Step 3:</em></strong> Create a configuration file of mutt: muttrc</p>
+            <pre><code>touch ~<span class="hljs-regexp">/.mutt/mu</span>ttrc
+            </code></pre>
+            <p><strong><em>Step 4:</em></strong> Open muttrc file in your favourite editor:</p>
+            <p>To open muttrc file in vim :</p>
+            <p>vim ~/.mutt/muttrc</p>
+            <p>After opening it, just copy-paste the below code and replace it with your email id and password wherever
+                implied.</p>
+            <pre><code><span class="hljs-comment"># ================  IMAP ====================</span>
+            <span class="hljs-built_in">set</span> imap_user = yourusername@gmail.com
+            <span class="hljs-built_in">set</span> imap_pass = yourpassword
+            <span class="hljs-built_in">set</span> spoolfile = imaps://imap.gmail.com/INBOX
+            <span class="hljs-built_in">set</span> folder = imaps://imap.gmail.com/
+            <span class="hljs-built_in">set</span> record=<span class="hljs-string">"imaps://imap.gmail.com/[Gmail]/Sent Mail"</span>
+            <span class="hljs-built_in">set</span> postponed=<span class="hljs-string">"imaps://imap.gmail.com/[Gmail]/Drafts"</span>
+            <span class="hljs-built_in">set</span> mbox=<span class="hljs-string">"imaps://imap.gmail.com/[Gmail]/All Mail"</span>
+            <span class="hljs-built_in">set</span> header_cache = <span class="hljs-string">"~/.mutt/cache/headers"</span>
+            <span class="hljs-built_in">set</span> message_cachedir = <span class="hljs-string">"~/.mutt/cache/bodies"</span>
+            <span class="hljs-built_in">set</span> certificate_file = <span class="hljs-string">"~/.mutt/certificates"</span>
+            <span class="hljs-comment"># ================  SMTP  ====================</span>
+            <span class="hljs-built_in">set</span> smtp_url = <span class="hljs-string">"smtp://yourusername@smtp.gmail.com:587/"</span>
+            <span class="hljs-built_in">set</span> smtp_pass = <span class="hljs-variable">$imap_pass</span>
+            <span class="hljs-built_in">set</span> ssl_force_tls = yes <span class="hljs-comment"># Require encrypted connection</span>
+            
+            <span class="hljs-comment"># ================  Composition  ====================</span>
+            <span class="hljs-built_in">set</span> editor = <span class="hljs-string">"vim"</span>      <span class="hljs-comment"># Set your favourite editor.</span>
+            <span class="hljs-built_in">set</span> edit_headers = yes  <span class="hljs-comment"># See the headers when editing</span>
+            <span class="hljs-built_in">set</span> charset = UTF-8     <span class="hljs-comment"># value of $LANG; also fallback for send_charset</span>
+            <span class="hljs-comment"># Sender, email address, and sign-off line must match</span>
+            <span class="hljs-built_in">unset</span> use_domain        <span class="hljs-comment"># because joe@localhost is just embarrassing</span>
+            <span class="hljs-built_in">set</span> realname = <span class="hljs-string">"Your Name"</span>
+            <span class="hljs-built_in">set</span> from = <span class="hljs-string">"yourusername@gmail.com"</span>
+            <span class="hljs-built_in">set</span> use_from = yes
+            </code></pre>
+            <p>This is a very minimal working configuration which you can, later on, modify as per your choice. Save the
+                above file and exit.</p>
+            <p><strong><em>Step 5:</em></strong> In order to allow mutt work with Gmail you need to go to <a
+                    href="https://myaccount.google.com/lesssecureapps">Less secure app access</a> and ensure that you
+                have this setting.</p>
+            <pre><code><span class="hljs-attribute"><span class="hljs-nomarkup">Allow</span></span> less secure apps: <span class="hljs-literal">ON</span>
+            </code></pre>
+            <p><strong><em>Step 6:</em></strong> Well, you are all set now to hit mutt straight from the terminal and
+                get started with mails on the terminal ✔️</p>
+            <pre><code><span class="hljs-attribute">mutt</span>
+            </code></pre>
+            <h3 id="getting-started-with-mutt">Getting Started with mutt</h3>
+            <p>Let me help you also send you your first non-HTML email from Terminal to yourself 👈</p>
+            <ol>
+                <li>
+                    <p>Press m</p>
+                </li>
+                <li>
+                    <p>You will have a question something like this:</p>
+                    <p> Recall postponed message? ([yes]/no):</p>
+                </li>
+            </ol>
+            <p>Enter no and proceed. In the To: section write your email id.</p>
+            <ol>
+                <li>
+                    <p>Enter the Subject now and after that the editor you have written in the muttrc file must come up.
+                        Type the Body of the email. Save the changes and quit.</p>
+                </li>
+                <li>
+                    <p>You will have a screen in mutt that will ask for your confirmation to send it. Press y .</p>
+                </li>
+                <li>
+                    <p>It’s done! You have sent your first email and now you can quit mutt by pressing q</p>
+                </li>
+            </ol>
+            <p>So, it’s a wrap for now and I am sharing with you all a mutt cheatsheet which I know you will not regret
+                to use to make your muttway smooth!</p>
+            <p><a href="https://kapeli.com/cheat_sheets/Mutt.docset/Contents/Resources/Documents/index">Mutt
+                    Cheatsheet</a></p>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="footer-header">Let's get in touch!</div>
+        <ul class="social-links">
+            <li class="list-item-inline">
+                <a class="link" href="http://github.com/mritunjaysharma394"><img class="footer-sm-icon"
+                        src="images/github.svg" />
+                </a>
+            </li class="list-item-inline"> <a class="link" href="https://twitter.com/mritunjay394"><img
+                    class="footer-sm-icon" src="images/twitter.svg" />
+            </a>
+            </li class="list-item-inline"> <a class="link" href="https://www.linkedin.com/in/mritunjay394/"><img
+                    class="footer-sm-icon" src="images/linkedin.svg" /></li>
+            </a>
+        </ul>
+        <small> © Copyright Mritunjay Sharma </small>
+    </footer>
+</body>
+
+</html>

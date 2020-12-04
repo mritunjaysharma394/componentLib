@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home | Mritunjay Sharma</title>
+    <link href="styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <nav class="navigation container">
+        <div class="nav-brand"><a class="link" href="/">Mritunjay Sharma</a></div>
+        <label for="toggle"><img class="emoji" src="/images/burger.svg"></label>
+        <input type="checkbox" id="toggle" />
+        <ul class="list-non-bullet nav-pills">
+            <li class="list-item-inline">
+                <a class="link link-active" href="/"> <span class="icon"><img draggable="false" loading="eager"
+                            class="emoji" alt="🏡" src="/images/home.svg"></span> home</a>
+            </li>
+            <li class="list-item-inline">
+                <a class="link" href="/projects.html"> <span class="icon"><img draggable="false" loading="eager"
+                            class="emoji" alt="👨‍💻" src="images/projects.svg"></span> projects</a>
+            </li>
+            <li class="list-item-inline">
+                <a class="link" href="/blogs.html"> <span class="icon"><img draggable="false" loading="eager"
+                            class="emoji" alt="🗒" src="images/blogging.svg"></span> blogs </a>
+            </li>
+            <li class="list-item-inline">
+                <a class="link" href="https://drive.google.com/file/d/17zW8grPJZRVPUJFK2oLMcBYwqTbS1GIc/view"> <span
+                        class="icon"><img draggable="false" loading="eager" class="emoji" alt="🗒"
+                            src="images/approved.svg"></span> resume </a>
+            </li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <img class="hero-img" src="images/GithubActions.png" />
+        <h1 class="hero-heading">Tutorial to setup GitHub Actions for<span class="heading-inverted"> automating Python
+                code formatting.</span></h1>
+    </header>
+
+    <section class="section ow">
+        <div class="container container-center">
+            <hr>
+            <p>This is a beginner-friendly 💯 post that will tell you how easy it will become to conform to Python
+                coding styles using <a href="https://github.com/marketplace/actions/autoyapf">autoyapf</a> GitHub Action
+                in your Python projects!</p>
+            <h2 id="introduction">Introduction</h2>
+            <p>To begin with - let&#39;s discuss first what are GitHub Actions and what magic they bring a :smiley:?</p>
+            <h2 id="github-actions">GitHub Actions</h2>
+            <p>GitHub Actions is that piece of magic which enables you to automate, customize, and execute your software
+                development workflows right in your repository.</p>
+            <p>But hey? What are words without actions? And so what are <strong>actions</strong> without
+                <strong>workflows</strong>? Yes, you got it right! For GitHub Actions to work you need to use
+                <em>Workflows</em> but what are Workflows?
+                A workflow is a configurable automated process made up of one or more jobs. Now, these jobs can be like
+                the accounting of the trigger for the GitHub action to work - like push on the main branch.</p>
+            <p>Workflow files use YAML syntax and must have either a .yml or .yaml file extension. </p>
+            <p>For GitHub Actions to work you must store workflow files in the <code>.github/workflows</code> directory
+                of your repository.</p>
+            <h3 id="brief-introduction-to-building-a-github-action">Brief Introduction to building a GitHub Action</h3>
+            <blockquote>
+                <p>Note: In order to use an <em>existing GitHub action</em> all you require is <em>just a Workflow YAML
+                        file</em> in <code>.github/workflows</code>. The files mentioned in this part of the blog are
+                    required when you start building your own GitHub Actions :smile: </p>
+            </blockquote>
+            <p>In order to make almost any GitHub Action - you require at least these files:</p>
+            <ul>
+                <li>
+                    <p><strong>Dockerfile</strong> — GitHub actions are of three types - Docker actions, Javascript
+                        actions and composite run steps action. In our case- we are going to use Docker Action and so
+                        Dockerfile is used to define the container environment that runs the action.</p>
+                </li>
+                <li>
+                    <p><strong>action.yml</strong> — This will define inputs, outputs, Entrypoint for our action, and
+                        other details like name of the action, description, author name, etc.</p>
+                </li>
+                <li>
+                    <p><strong>script</strong> — An action might require a script to perform a task, in our case we just
+                        need an Entrypoint script named as <code>entrypoint.sh</code></p>
+                </li>
+                <li>
+                    <p><strong>README.md</strong> — This is optional, but if we want to publish our action on the
+                        Marketplace we need it. README.md file is useful to provide examples that are needed for the
+                        action to run without any hassles.</p>
+                </li>
+            </ul>
+            <p>This is the basic skeleton of how the GitHub actions are built. If you want to start with making your own
+                first action, check out this official Hello World <a
+                    href="https://docs.github.com/en/actions/creating-actions/creating-a-docker-container-action">tutorial</a>
+            </p>
+            <p>Let&#39;s move on to the main part of preparing and setting up the workflow for the
+                <strong>autoyapf</strong> GitHub Action we are going to use.</p>
+            <h2 id="what-is-autoyapf-">What is autoyapf?</h2>
+            <p><a href="https://github.com/marketplace/actions/autoyapf">autoyapf</a> is a GitHub action for
+                <em>yapf</em>, an open-source tool that automatically formats Python code to conform to the PEP 8 style
+                guide. It is in essence, the algorithm that takes the code and reformats it to the best formatting that
+                conforms to the style guide, even if the original code didn&#39;t violate the style guide.</p>
+            <p>This action is designed to be used in conjunction with the &#39;push&#39; trigger. In simple words -
+                everytime the maintainer pushes the code from their own playground or merges a Pull Request from a
+                contributor it will be formatted automatically with the PEP 8 Style guidelines using the yapf tool. This
+                action is a win-win situation for both contributors and maintainers of projects involving Python! </p>
+            <h2 id="choosing-the-project">Choosing the Project</h2>
+            <p>The first step is always choosing the repository where you will be using the GitHub action.
+                Since the GitHub action is made for python projects, I am going to use an open-source Python project
+                that I created recently called <a href="https://github.com/mritunjaysharma394/sedpy">sedpy</a></p>
+            <h2 id="preparing-the-workflow">Preparing the Workflow</h2>
+            <ul>
+                <li>We&#39;ll go to our repository and click on the <strong>Actions</strong> tab. That will then reflect
+                    an option like <em>set up a workflow yourself</em>. Click it.</li>
+            </ul>
+            <blockquote>
+                <p>This will create a YAML file in the path:
+                    <strong>.github/workflows/main.yml</strong></p>
+            </blockquote>
+            <p>You can rename the file to whatever you prefer like, in this case, I will give it the name
+                <strong>autoyapf.yml</strong> instead of <strong>main.yml</strong>. </p>
+            <p>Now, let&#39;s dive in the <strong>autoyapf.yml</strong> file: </p>
+            <pre><code class="lang-yaml"><span class="hljs-attribute">name</span>: Formatting python code
+            <span class="hljs-attribute">on</span>:
+              <span class="hljs-attribute">push</span>:
+                <span class="hljs-attribute">paths</span>:
+                - <span class="hljs-string">'**.py'</span>
+            </code></pre>
+            <p>What we have done until here is: </p>
+            <ul>
+                <li>Given a name to the workflow: <code>Formatting python code</code></li>
+                <li>Defined what event will cause the workflow to trigger. In this case, it is triggered when the python
+                    file is pushed in the repository. </li>
+            </ul>
+            <p>Next step is to define the jobs, further, we added:</p>
+            <pre><code class="lang-yaml"><span class="hljs-string">jobs:</span>
+              <span class="hljs-string">autoyapf:</span>
+                <span class="hljs-string">runs-on:</span> <span class="hljs-string">ubuntu-latest
+            </span>    <span class="hljs-string">steps:</span>
+                  - <span class="hljs-string">uses:</span> <span class="hljs-string">actions/</span><span class="hljs-string">checkout@</span><span class="hljs-string">master
+            </span>        <span class="hljs-string">with:</span>
+                      <span class="hljs-string">ref:</span> ${{ <span class="hljs-string">github.</span><span class="hljs-string">head_ref </span>}}
+                  - <span class="hljs-string">name:</span> <span class="hljs-string">autoyapf
+            </span>        <span class="hljs-string">id:</span> <span class="hljs-string">autoyapf
+            </span>        <span class="hljs-string">uses:</span> <span class="hljs-string">mritunjaysharma394/</span><span class="hljs-string">autoyapf@</span><span class="hljs-string">v2
+            </span>        <span class="hljs-string">with:</span>
+                      <span class="hljs-string">args:</span> <span class="hljs-built_in">--style</span> <span class="hljs-string">pep8 </span><span class="hljs-built_in">--recursive</span> <span class="hljs-built_in">--in-place</span> .
+                  - <span class="hljs-string">name:</span> <span class="hljs-string">Check </span><span class="hljs-string">for </span><span class="hljs-string">modified </span><span class="hljs-string">files
+            </span>        <span class="hljs-string">id:</span> <span class="hljs-string">git-check
+            </span>        <span class="hljs-string">run:</span> <span class="hljs-string">echo </span>::<span class="hljs-built_in">set-output</span> <span class="hljs-string">name=</span><span class="hljs-string">modified:</span>:$(<span class="hljs-string">if </span><span class="hljs-string">git </span><span class="hljs-string">diff-index </span><span class="hljs-built_in">--quiet</span> <span class="hljs-string">HEAD </span>--; <span class="hljs-string">then </span><span class="hljs-string">echo </span><span class="hljs-string">"false"</span>; <span class="hljs-string">else </span><span class="hljs-string">echo </span><span class="hljs-string">"true"</span>; <span class="hljs-string">fi)</span>
+                  - <span class="hljs-string">name:</span> <span class="hljs-string">Push </span><span class="hljs-string">changes
+            </span>        <span class="hljs-string">if:</span> <span class="hljs-string">steps.</span><span class="hljs-string">git-check.</span><span class="hljs-string">outputs.</span><span class="hljs-string">modified </span>== <span class="hljs-string">'true'</span>
+                    <span class="hljs-string">run:</span> |
+                      <span class="hljs-string">git </span><span class="hljs-string">config </span><span class="hljs-built_in">--global</span> <span class="hljs-string">user.</span><span class="hljs-string">name </span><span class="hljs-string">'Mritunjay Sharma'</span>
+                      <span class="hljs-string">git </span><span class="hljs-string">config </span><span class="hljs-built_in">--global</span> <span class="hljs-string">user.</span><span class="hljs-string">email </span><span class="hljs-string">'mritunjaysharma394@users.noreply.github.com'</span>
+                      <span class="hljs-string">git </span><span class="hljs-string">remote </span><span class="hljs-built_in">set-url</span> <span class="hljs-string">origin </span><span class="hljs-string">https:</span>//<span class="hljs-string">x-access-</span><span class="hljs-string">token:</span>${{ <span class="hljs-string">secrets.</span><span class="hljs-string">GITHUB_TOKEN </span>}}@<span class="hljs-string">github.</span><span class="hljs-string">com/</span>${{ <span class="hljs-string">github.</span><span class="hljs-string">repository </span>}}
+                      <span class="hljs-string">git </span><span class="hljs-string">commit </span>-<span class="hljs-string">am </span><span class="hljs-string">"Automated autoyapf fixes"</span>
+                      <span class="hljs-string">git </span><span class="hljs-string">push</span>
+            </code></pre>
+            <p>Here&#39;s a brief detail about almost everything the above snippet does: </p>
+            <ul>
+                <li>The jobs that the workflow has to perform will run on the GitHub hosted runner which is
+                    <code>ubuntu-latest</code> in our case.</li>
+            </ul>
+            <pre><code class="lang-yaml"><span class="hljs-attribute">jobs</span>:
+              <span class="hljs-attribute">autoyapf</span>:
+                <span class="hljs-attribute">runs-on</span>: ubuntu-latest
+            </code></pre>
+            <ul>
+                <li>We define the <code>steps</code> of jobs next.<ul>
+                        <li>The first step checks out the repository where we want to workflow to execute. Since I am
+                            using it inside <a href="https://github.com/mritunjaysharma394/sedpy">sedpy</a>, it will
+                            check out this repository&#39;s <code>master</code> branch</li>
+                    </ul>
+                </li>
+            </ul>
+            <pre><code class="lang-yaml">steps:
+                  - uses: actions/checkout@<span class="hljs-keyword">master</span>
+                    <span class="hljs-title">with</span>:
+                      <span class="hljs-keyword">ref</span>: ${{ github.head_ref }}
+            </code></pre>
+            <ul>
+                <li>In the next step - we checked out the GitHub action
+                    <a href="https://github.com/marketplace/actions/autoyapf">autoyapf</a> which will perform all the
+                    formatting using <code>yapf</code> tool with the arguments supplied as: <code>args: --style pep8
+                        --recursive --in-place .</code></li>
+            </ul>
+            <pre><code class="lang-yaml"><span class="hljs-attr">- name:</span> autoyapf
+            <span class="hljs-attr">        id:</span> autoyapf
+            <span class="hljs-attr">        uses:</span> mritunjaysharma394/autoyapf@v2
+            <span class="hljs-attr">        with:</span>
+            <span class="hljs-attr">          args:</span> --style pep8 --recursive --in-place .
+            </code></pre>
+            <ul>
+                <li>This step checks if the above step has made any changes in the code. If it has made any changes then
+                    the next step will push the changes to the <code>sedpy</code> repository. </li>
+            </ul>
+            <pre><code class="lang-yaml">- <span class="hljs-string">name:</span> <span class="hljs-string">Check </span><span class="hljs-string">for </span><span class="hljs-string">modified </span><span class="hljs-string">files
+            </span>        <span class="hljs-string">id:</span> <span class="hljs-string">git-check
+            </span>        <span class="hljs-string">run:</span> <span class="hljs-string">echo </span>::<span class="hljs-built_in">set-output</span> <span class="hljs-string">name=</span><span class="hljs-string">modified:</span>:$(<span class="hljs-string">if </span><span class="hljs-string">git </span><span class="hljs-string">diff-index </span><span class="hljs-built_in">--quiet</span> <span class="hljs-string">HEAD </span>--; <span class="hljs-string">then </span><span class="hljs-string">echo </span><span class="hljs-string">"false"</span>; <span class="hljs-string">else </span><span class="hljs-string">echo </span><span class="hljs-string">"true"</span>; <span class="hljs-string">fi)</span>
+            </code></pre>
+            <ul>
+                <li>This will check the condition as detailed above and we will push the changes using <em>run</em>
+                    utility that makes us use terminal-like commands in the <code>.yml</code> files.</li>
+            </ul>
+            <pre><code class="lang-yaml">      - <span class="hljs-string">name:</span> <span class="hljs-string">Push </span><span class="hljs-string">changes
+            </span>        <span class="hljs-string">if:</span> <span class="hljs-string">steps.</span><span class="hljs-string">git-check.</span><span class="hljs-string">outputs.</span><span class="hljs-string">modified </span>== <span class="hljs-string">'true'</span>
+                    <span class="hljs-string">run:</span> |
+                      <span class="hljs-string">git </span><span class="hljs-string">config </span><span class="hljs-built_in">--global</span> <span class="hljs-string">user.</span><span class="hljs-string">name </span><span class="hljs-string">'Mritunjay Sharma'</span>
+                      <span class="hljs-string">git </span><span class="hljs-string">config </span><span class="hljs-built_in">--global</span> <span class="hljs-string">user.</span><span class="hljs-string">email </span><span class="hljs-string">'mritunjaysharma394@users.noreply.github.com'</span>
+                      <span class="hljs-string">git </span><span class="hljs-string">remote </span><span class="hljs-built_in">set-url</span> <span class="hljs-string">origin </span><span class="hljs-string">https:</span>//<span class="hljs-string">x-access-</span><span class="hljs-string">token:</span>${{ <span class="hljs-string">secrets.</span><span class="hljs-string">GITHUB_TOKEN </span>}}@<span class="hljs-string">github.</span><span class="hljs-string">com/</span>${{ <span class="hljs-string">github.</span><span class="hljs-string">repository </span>}}
+                      <span class="hljs-string">git </span><span class="hljs-string">commit </span>-<span class="hljs-string">am </span><span class="hljs-string">"Automated autoyapf fixes"</span>
+                      <span class="hljs-string">git </span><span class="hljs-string">push</span>
+            </code></pre>
+            <p>Woohoo! We have completed our workflow <code>autoyapf.yml</code> and the complete file looks
+                something like this: </p>
+            <pre><code class="lang-yaml">
+            <span class="hljs-string">name:</span> <span class="hljs-string">Formatting </span><span class="hljs-string">python </span><span class="hljs-string">code
+            </span><span class="hljs-string">on:</span>
+              <span class="hljs-string">push:</span>
+                <span class="hljs-string">paths:</span>
+                - <span class="hljs-string">'**.py'</span>
+            <span class="hljs-string">jobs:</span>
+              <span class="hljs-string">autoyapf:</span>
+                <span class="hljs-string">runs-on:</span> <span class="hljs-string">ubuntu-latest
+            </span>    <span class="hljs-string">steps:</span>
+                  - <span class="hljs-string">uses:</span> <span class="hljs-string">actions/</span><span class="hljs-string">checkout@</span><span class="hljs-string">master
+            </span>        <span class="hljs-string">with:</span>
+                      <span class="hljs-string">ref:</span> ${{ <span class="hljs-string">github.</span><span class="hljs-string">head_ref </span>}}
+                  - <span class="hljs-string">name:</span> <span class="hljs-string">autoyapf
+            </span>        <span class="hljs-string">id:</span> <span class="hljs-string">autoyapf
+            </span>        <span class="hljs-string">uses:</span> <span class="hljs-string">mritunjaysharma394/</span><span class="hljs-string">autoyapf@</span><span class="hljs-string">v2
+            </span>        <span class="hljs-string">with:</span>
+                      <span class="hljs-string">args:</span> <span class="hljs-built_in">--style</span> <span class="hljs-string">pep8 </span><span class="hljs-built_in">--recursive</span> <span class="hljs-built_in">--in-place</span> .
+                  - <span class="hljs-string">name:</span> <span class="hljs-string">Check </span><span class="hljs-string">for </span><span class="hljs-string">modified </span><span class="hljs-string">files
+            </span>        <span class="hljs-string">id:</span> <span class="hljs-string">git-check
+            </span>        <span class="hljs-string">run:</span> <span class="hljs-string">echo </span>::<span class="hljs-built_in">set-output</span> <span class="hljs-string">name=</span><span class="hljs-string">modified:</span>:$(<span class="hljs-string">if </span><span class="hljs-string">git </span><span class="hljs-string">diff-index </span><span class="hljs-built_in">--quiet</span> <span class="hljs-string">HEAD </span>--; <span class="hljs-string">then </span><span class="hljs-string">echo </span><span class="hljs-string">"false"</span>; <span class="hljs-string">else </span><span class="hljs-string">echo </span><span class="hljs-string">"true"</span>; <span class="hljs-string">fi)</span>
+                  - <span class="hljs-string">name:</span> <span class="hljs-string">Push </span><span class="hljs-string">changes
+            </span>        <span class="hljs-string">if:</span> <span class="hljs-string">steps.</span><span class="hljs-string">git-check.</span><span class="hljs-string">outputs.</span><span class="hljs-string">modified </span>== <span class="hljs-string">'true'</span>
+                    <span class="hljs-string">run:</span> |
+                      <span class="hljs-string">git </span><span class="hljs-string">config </span><span class="hljs-built_in">--global</span> <span class="hljs-string">user.</span><span class="hljs-string">name </span><span class="hljs-string">'Mritunjay Sharma'</span>
+                      <span class="hljs-string">git </span><span class="hljs-string">config </span><span class="hljs-built_in">--global</span> <span class="hljs-string">user.</span><span class="hljs-string">email </span><span class="hljs-string">'mritunjaysharma394@users.noreply.github.com'</span>
+                      <span class="hljs-string">git </span><span class="hljs-string">remote </span><span class="hljs-built_in">set-url</span> <span class="hljs-string">origin </span><span class="hljs-string">https:</span>//<span class="hljs-string">x-access-</span><span class="hljs-string">token:</span>${{ <span class="hljs-string">secrets.</span><span class="hljs-string">GITHUB_TOKEN </span>}}@<span class="hljs-string">github.</span><span class="hljs-string">com/</span>${{ <span class="hljs-string">github.</span><span class="hljs-string">repository </span>}}
+                      <span class="hljs-string">git </span><span class="hljs-string">commit </span>-<span class="hljs-string">am </span><span class="hljs-string">"Automated autoyapf fixes"</span>
+                      <span class="hljs-string">git </span><span class="hljs-string">push</span>
+            </code></pre>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-header">Let's get in touch!</div>
+        <ul class="social-links">
+            <li class="list-item-inline">
+                <a class="link" href="http://github.com/mritunjaysharma394"><img class="footer-sm-icon"
+                        src="images/github.svg" />
+                </a>
+            </li class="list-item-inline"> <a class="link" href="https://twitter.com/mritunjay394"><img
+                    class="footer-sm-icon" src="images/twitter.svg" />
+            </a>
+            </li class="list-item-inline"> <a class="link" href="https://www.linkedin.com/in/mritunjay394/"><img
+                    class="footer-sm-icon" src="images/linkedin.svg" /></li>
+            </a>
+        </ul>
+        <small> © Copyright Mritunjay Sharma </small>
+    </footer>
+</body>
+
+</html>

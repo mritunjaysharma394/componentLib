@@ -59,8 +59,10 @@ hr {
 .link-secondary:hover {
     color: var(--dark-gray);
 }
+
 .link-center {
     text-align: center;
+    padding: 0.5rem;
 }
 
 .navigation .link:hover {
@@ -146,6 +148,9 @@ hr {
     text-align: center;
 }
 
+.list-non-bullet ul {
+    padding-inline-start: 0px;
+}
 
 .ow {
     background-color: var(--off-white);
@@ -293,7 +298,7 @@ label {
 }
 
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 768px) {
     label {
         display: block;
         cursor: default;
@@ -334,4 +339,67 @@ label {
         justify-content: space-around;
     }
 
+}
+
+/** coding-lanugage **/
+
+pre {
+    display: block;
+    padding: 28px;
+    margin: 0px 0px 14px;
+    font-size: 85%;
+    font-family: Consolas, Menlo, Monaco, source-code-pro, "Courier New", monospace;
+    tab-size: 4;
+    hyphens: none;
+    color: white;
+    background-color: #011627;
+    overflow: auto;
+    border-radius: 10px;
+}
+
+
+
+code {
+    font-family: Consolas, Menlo, Monaco, source-code-pro, "Courier New", monospace;
+    line-height: 100%;
+    background-color: #D1D1D0;
+    padding: 0.15rem 0.15rem;
+    border-radius: 0.25rem;
+    letter-spacing: normal;
+    word-break: normal;
+}
+
+
+pre code {
+    border: none;
+    background: none;
+    line-height: 1em;
+    letter-spacing: normal;
+    word-break: break-all;
+}
+
+blockquote {
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+}
+
+blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+
+blockquote p {
+    display: inline;
+}
+
+.blog-images {
+    max-width: 100%;
+    height: auto;
 }
