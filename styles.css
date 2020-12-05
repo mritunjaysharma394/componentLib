@@ -6,9 +6,24 @@
     --off-white: #F3F4F6;
 }
 
+/* fixes right-space problem in mobile phones **/
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Montserrat',
         sans-serif;
+
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
 }
 
 hr {
