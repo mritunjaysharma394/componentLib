@@ -69,6 +69,9 @@ hr {
     color: var(--dark-gray);
 }
 
+
+
+
 /** look for BEM conventions of CSS **/
 
 /** lists **/
@@ -302,6 +305,12 @@ label {
     label {
         display: block;
         cursor: default;
+    }
+
+    .btn {
+        display: block;
+        width: 10rem;
+        margin-bottom: 0.5rem;
     }
 
     .navigation {
