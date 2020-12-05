@@ -79,6 +79,7 @@ hr {
 .link-center {
     text-align: center;
     padding: 0.5rem;
+
 }
 
 .navigation .link:hover {
@@ -332,8 +333,17 @@ label {
 
     .btn {
         display: block;
-        width: 10rem;
+        padding: 0.5rem 1rem;
+        width: 11rem;
         margin-bottom: 0.5rem;
+        text-align: center;
+    }
+
+    .btn-projects {
+        display: inline;
+        padding: 0.5rem 1rem;
+        width: 11rem;
+        text-align: center;
     }
 
     .navigation {
