@@ -338,12 +338,12 @@ label {
 
     .navigation {
         padding: 0.2rem;
-        margin-right: auto;
+        margin-right: 0.5rem;
     }
 
     .navigation .nav-pills {
         text-align: center;
-        width: 100%;
+        width: auto;
         display: none;
         position: absolute;
         right: 0px;
@@ -355,8 +355,7 @@ label {
         border-top-left-radius: 1rem; */
         padding: 0rem;
         z-index: 50;
-        margin-right: auto;
-        width: auto;
+        margin-right: initial;
     }
 
     /* .navigation a{
