@@ -331,6 +331,10 @@ label {
         cursor: default;
     }
 
+    .link-center {
+        padding: 0rem;
+    }
+
     .btn {
         display: block;
         padding: 0.5rem 1rem;
@@ -340,7 +344,7 @@ label {
     }
 
     .btn-projects {
-        display: inline;
+        display: inline-block;
         padding: 0.5rem 1rem;
         width: 11rem;
         text-align: center;
